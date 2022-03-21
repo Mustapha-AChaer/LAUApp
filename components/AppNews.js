@@ -1,9 +1,13 @@
 import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
+import { useSelector } from "react-redux";
 import NewsCard from "./NewsComponents/NewsCard";
 
 function AppNews(props) {
+  let news = useSelector((state) => state.news.news);
+  console.log(news);
+
   return (
     <ScrollView style={styles.newsHeader}>
       <LinearGradient
@@ -12,11 +16,9 @@ function AppNews(props) {
         style={styles.background}
       />
 
-      <NewsCard />
-      <NewsCard />
-      <NewsCard />
-      <NewsCard />
-      <NewsCard />
+      {news.map((element) => (
+        <NewsCard news={element} />
+      ))}
     </ScrollView>
   );
 }

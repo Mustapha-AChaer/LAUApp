@@ -4,8 +4,8 @@ import { Text, View, StyleSheet } from "react-native";
 function NewsInfo(props) {
   return (
     <View>
-      <Text style={styles.title}>News Title</Text>
-      <Text style={styles.description}>News Descirption</Text>
+      <Text style={styles.title}>{props.info.title}</Text>
+      <Text style={styles.description}>{props.info.description}</Text>
     </View>
   );
 }

@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import newsSlice, { newsActions } from "../../store/news-slice";
 import NewsInfo from "./NewsInfo";
 
 function NewsCard(props) {
+  console.log(props);
   return (
     <View style={styles.card}>
       <Image
@@ -12,7 +15,7 @@ function NewsCard(props) {
         style={styles.image}
       />
 
-      <NewsInfo />
+      <NewsInfo info={props.news} />
     </View>
   );
 }
