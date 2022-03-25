@@ -8,12 +8,7 @@ function NewsCard(props) {
   console.log(props);
   return (
     <View style={styles.card}>
-      <Image
-        source={{
-          uri: "https://180dc.org/wp-content/uploads/2016/02/Picture1-2.jpg",
-        }}
-        style={styles.image}
-      />
+      <Image source={{ uri: props.news.imgURL }} style={styles.image} />
 
       <NewsInfo info={props.news} />
     </View>
