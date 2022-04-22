@@ -1,3 +1,5 @@
+import { useRoute } from "@react-navigation/native";
+import route from "color-convert/route";
 import mongoose from "mongoose";
 import React from "react";
 import {
@@ -8,9 +10,11 @@ import {
   Text,
   View,
 } from "react-native";
-import AppNews from "./AppNews";
+import AppNews from "../components/AppNews";
 
 function HomePage(props) {
+  // const route = useRoute();
+  // console.log(route.name);
   return (
     <View style={styles.container}>
       <View style={styles.mainHeader}>

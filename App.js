@@ -29,8 +29,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Provider } from "react-redux";
 import store from "./store";
-import HomePage from "./components/HomePage";
-import SignUp from "./components/SignUp";
+import HomePage from "./screens/HomePage";
+import SignUp from "./screens/SignUp";
+import Login from "./screens/Login";
+import RootStack from "./navigators/RootStack";
 
 function AboutUs() {
   return (
@@ -47,7 +49,7 @@ function MyDrawer() {
     <Drawer.Navigator>
       <Drawer.Screen name="Home" component={HomePage} />
       <Drawer.Screen name="Apply" component={AboutUs} />
-      <Drawer.Screen name="Login/SignUp" component={SignUp} />
+      <Drawer.Screen name="Login/SignUp" component={RootStack} />
       <Drawer.Screen name="About Us" component={AboutUs} />
     </Drawer.Navigator>
   );
@@ -60,5 +62,7 @@ export default function App() {
         <MyDrawer />
       </NavigationContainer>
     </Provider>
+    // <Login />
+    // <RootStack />
   );
 }
