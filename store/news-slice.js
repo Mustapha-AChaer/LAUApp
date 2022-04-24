@@ -34,7 +34,6 @@ const newsSlice = createSlice({
   },
   reducers: {
     getNews(state, payload) {
-      console.log("Hello");
       return state.news;
     },
   },

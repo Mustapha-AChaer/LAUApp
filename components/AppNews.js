@@ -6,7 +6,7 @@ import NewsCard from "./NewsComponents/NewsCard";
 
 function AppNews(props) {
   let news = useSelector((state) => state.news.news);
-  console.log(news);
+  // console.log(news);
 
   return (
     <ScrollView style={styles.newsHeader}>

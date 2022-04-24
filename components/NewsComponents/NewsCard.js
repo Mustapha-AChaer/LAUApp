@@ -5,7 +5,7 @@ import newsSlice, { newsActions } from "../../store/news-slice";
 import NewsInfo from "./NewsInfo";
 
 function NewsCard(props) {
-  console.log(props);
+  //console.log(props);
   return (
     <View style={styles.card}>
       <Image source={{ uri: props.news.imgURL }} style={styles.image} />

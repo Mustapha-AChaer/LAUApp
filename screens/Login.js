@@ -33,6 +33,8 @@ import {
 import { Octicons, Ionicons, Fontisto } from "@expo/vector-icons";
 import KeyboardAvoidingWrapper from "../components/KeyboardAvoidingWrapper.js";
 import HomePage from "./HomePage.js";
+import { useDispatch, useSelector } from "react-redux";
+import { loggedInActions } from "../store/loggedin-slice.js";
 
 //API Client
 const axios = require("axios").default;
@@ -45,13 +47,9 @@ const Login = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
-  // const axiosConfig = {
-  //   headers: {
-  //     "Content-Type": "application/x-www-form-urlencoded",
-  //     "Access-Control-Allow-Origin": "*",
-  //   },
-  // };
 
+  //dispatch
+  const dispatch = useDispatch();
   //Login Handler
   const handleLogin = (credentials, setSubmitting) => {
     handleMessage(null);
@@ -61,16 +59,17 @@ const Login = ({ navigation }) => {
     axios
       .post(url, credentials)
       .then((response) => {
-        console.log("We are here");
+        //console.log("We are here");
 
-        console.log(response.data);
+        //console.log(response.data);
         const result = response.data;
         const { message, status, data } = result;
 
         if (status === "FAILED") {
           handleMessage(message, status);
         } else {
-          console.log("Good Job");
+          dispatch(loggedInActions.login(data[0]));
+          dispatch(loggedInActions.toggleIsLoggedIn());
           navigation.navigate("Home", { ...data[0] });
         }
         setSubmitting(false);

@@ -36,14 +36,17 @@ import { Octicons, Ionicons, Fontisto } from "@expo/vector-icons";
 
 const { primaryGreen, secondaryGreen, primary } = Colors;
 //DateTimePicker
-import DateTimePicker from "@react-native-community/datetimepicker";
 import KeyboardAvoidingWrapper from "../components/KeyboardAvoidingWrapper.js";
+import { useDispatch } from "react-redux";
+import { loggedInActions } from "../store/loggedin-slice.js";
+
 const axios = require("axios").default;
 
 const SignUp = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
+  const dispatch = useDispatch();
 
   //Login Handler
   const handleSignUp = (credentials, setSubmitting) => {
@@ -51,31 +54,28 @@ const SignUp = ({ navigation }) => {
     const url = "https://salty-bastion-49991.herokuapp.com/user/signup";
     console.log(credentials);
 
-    axios
-      .post(url, credentials)
-      .then((response) => {
-        console.log("We are here");
+    axios.post(url, credentials).then((response) => {
+      console.log("We are here");
 
-        console.log(response.data);
-        const result = response.data;
-        const { message, status, data } = result;
+      console.log(response.data);
+      const result = response.data;
+      const { message, status } = result;
 
-        if (status === "FAILED") {
-          handleMessage(message, status);
-        } else {
-          console.log("Good Job");
-          navigation.navigate("Home", { ...data });
-        }
-        setSubmitting(false);
-      })
-      .catch((err) => {
-        setSubmitting(true);
-        console.log(err.response.data);
-        console.log("====================================");
-        console.log();
-        console.log("====================================");
-        handleMessage("An error occured. Check your internet connecition");
-      });
+      if (status === "FAILED") {
+        handleMessage(message, status);
+      } else {
+        //console.log("Good Job");
+
+        const data = credentials;
+        dispatch(loggedInActions.login(data));
+        dispatch(loggedInActions.toggleIsLoggedIn());
+        //navigation.navigate("Home", { ...data });
+      }
+      setSubmitting(false);
+    });
+    // .catch((err) => {
+    //   handleMessage("An error occured. Check your internet connecition");
+    // });
   };
 
   //Message Handler

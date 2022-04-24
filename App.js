@@ -27,12 +27,14 @@ import * as React from "react";
 import { View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import store from "./store";
 import HomePage from "./screens/HomePage";
 import SignUp from "./screens/SignUp";
 import Login from "./screens/Login";
 import RootStack from "./navigators/RootStack";
+import Profile from "./screens/Profile";
+import LibraryStack from "./navigators/LibraryStack";
 
 function AboutUs() {
   return (
@@ -45,12 +47,23 @@ function AboutUs() {
 const Drawer = createDrawerNavigator();
 
 function MyDrawer() {
+  const isLoggedIn = useSelector((state) => state.loggedInInfo.isLoggedIn);
+  console.log(isLoggedIn);
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="Home" component={HomePage} />
-      <Drawer.Screen name="Apply" component={AboutUs} />
-      <Drawer.Screen name="Login/SignUp" component={RootStack} />
-      <Drawer.Screen name="About Us" component={AboutUs} />
+      {!isLoggedIn && <Drawer.Screen name="Home" component={HomePage} />}
+      {!isLoggedIn && <Drawer.Screen name="Apply" component={AboutUs} />}
+      {!isLoggedIn && (
+        <Drawer.Screen name="Login/SignUp" component={RootStack} />
+      )}
+      {!isLoggedIn && <Drawer.Screen name="About Us" component={AboutUs} />}
+      {isLoggedIn && <Drawer.Screen name="Profile" component={Profile} />}
+      {isLoggedIn && <Drawer.Screen name="Courses" component={AboutUs} />}
+      {isLoggedIn && <Drawer.Screen name="Reservations" component={AboutUs} />}
+      {isLoggedIn && <Drawer.Screen name="Library" component={LibraryStack} />}
+      {isLoggedIn && <Drawer.Screen name="Sports" component={AboutUs} />}
+      {isLoggedIn && <Drawer.Screen name="Cafeteria" component={AboutUs} />}
+      {isLoggedIn && <Drawer.Screen name="Clubs" component={AboutUs} />}
     </Drawer.Navigator>
   );
 }

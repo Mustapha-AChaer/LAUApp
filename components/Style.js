@@ -149,3 +149,15 @@ export const TextLinkContent = styled.Text`
   color: yellow;
   font-size: 15px;
 `;
+
+//Profile Container
+export const ProfileBox = styled.View`
+  background-color: white;
+  height: 500px;
+  border-radius: 10px;
+  flex: 1;
+  margin-top: -20px;
+  padding: 10px;
+`;
+
+//Library Container

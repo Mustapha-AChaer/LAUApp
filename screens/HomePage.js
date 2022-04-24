@@ -13,8 +13,6 @@ import {
 import AppNews from "../components/AppNews";
 
 function HomePage(props) {
-  // const route = useRoute();
-  // console.log(route.name);
   return (
     <View style={styles.container}>
       <View style={styles.mainHeader}>
