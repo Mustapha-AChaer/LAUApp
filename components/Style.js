@@ -14,8 +14,8 @@ const { primary, primaryGreen, secondaryGreen } = Colors;
 
 export const StyledContainer = styled.View`
   flex: 1;
-  padding: 25px;
-  padding-top: ${StatusBarHeight}px;
+  padding: 15px;
+  padding-top: ${StatusBarHeight - 10}px;
   background-color: ${primaryGreen};
 `;
 
@@ -161,3 +161,89 @@ export const ProfileBox = styled.View`
 `;
 
 //Library Container
+export const BookViewer = styled.View`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: ${primaryGreen};
+  padding: 3px;
+  margin: 5px;
+`;
+
+export const BookCard = styled.View`
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+  background-color: white;
+  max-height: 150px;
+  width: 98%;
+  padding: 3px;
+  margin: 3px;
+  border-radius: 5px;
+`;
+
+export const BookTitle = styled.Text`
+  font-size: 15px;
+  color: ${primaryGreen};
+  text-decoration: underline;
+`;
+
+export const BookDescription = styled.Text`
+  font-size: 12px;
+  color: black;
+  padding: 2px 0;
+`;
+
+export const LocationGenre = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0 3px 0;
+`;
+
+//Cafeteria
+export const DishCard = styled.View`
+  display: flex;
+  flex-direction: row;
+
+  background-color: white;
+  height: 130px;
+  margin: 4px;
+  border-radius: 30px;
+
+  overflow: hidden;
+`;
+
+export const DishImage = styled.Image`
+  height: 100%;
+  border-radius: 30px;
+  width: 40%;
+  margin-right: 3px;
+  align-self: center;
+`;
+
+export const DishInformation = styled.View`
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  padding: 2px;
+`;
+
+export const DishPrice = styled.View`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const CafeteriaTitle = styled.Text`
+  font-size: 25px;
+  align-self: center;
+  color: ${primary};
+  background-color: ${primaryGreen};
+  text-decoration: underline;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+`;

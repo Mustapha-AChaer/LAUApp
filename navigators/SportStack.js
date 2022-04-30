@@ -9,16 +9,14 @@ const { primary, primaryGreen, secondaryGreen } = Colors;
 //React Navigation
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Login from "../screens/Login";
-import SignUp from "../screens/SignUp";
-import HomePage from "../screens/HomePage.js";
-import Library from "../screens/Library.js";
-import Books from "../screens/Books.js";
-import StudyRoom from "../screens/StudyRoom.js";
+
+import Sports from "../screens/Sports.js";
+import ViewAllGames from "../screens/ViewAllGames.js";
+import Tryouts from "../screens/Tryouts.js";
 
 const Stack = createNativeStackNavigator();
 
-const LibraryStack = (props) => {
+const SportsStack = (props) => {
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator
@@ -35,12 +33,12 @@ const LibraryStack = (props) => {
         }}
         intialRouteName="Login"
       >
-        <Stack.Screen name="Library" component={Library} />
-        <Stack.Screen name="Books" component={Books} />
-        <Stack.Screen name="StudyRoom" component={StudyRoom} />
+        <Stack.Screen name="Sports" component={Sports} />
+        <Stack.Screen name="LAU Sailors Games" component={ViewAllGames} />
+        <Stack.Screen name="Try Out Dates" component={Tryouts} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-export default LibraryStack;
+export default SportsStack;
