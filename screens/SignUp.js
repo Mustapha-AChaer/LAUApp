@@ -90,9 +90,6 @@ const SignUp = ({ navigation }) => {
         <ScrollView>
           <StatusBar style="dark" />
           <InnerContainer>
-            <PageTitle>Hello</PageTitle>
-            <SubTitle>Account Signup</SubTitle>
-
             <Formik
               initialValues={{
                 name: "",

@@ -8,6 +8,15 @@ import {
   ProfileBox,
   StyledContainer,
 } from "../components/Style";
+import {
+  ApplyLink,
+  ContactCard,
+  IDText,
+  ImageCircular,
+  InfoContainer,
+  LAUText,
+  NameText,
+} from "../components/AboutUsStyle";
 
 const { primary, primaryGreen, secondaryGreen } = Colors;
 
@@ -16,9 +25,11 @@ const Profile = () => {
   console.log(userInfo);
   return (
     <StyledContainer>
-      <ProfileBox>
-        <Text>{userInfo.name}</Text>
-      </ProfileBox>
+      <ContactCard>
+        <NameText>{userInfo.name}</NameText>
+        <IDText>{userInfo.email}</IDText>
+        <IDText>{userInfo.id}</IDText>
+      </ContactCard>
     </StyledContainer>
   );
 };

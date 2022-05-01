@@ -1,5 +1,7 @@
 import React from "react";
 import { Button } from "react-native";
+import { Text, ImageBackground, StyleSheet } from "react-native";
+
 import {
   ButtonText,
   InnerContainer,
@@ -16,7 +18,10 @@ const Library = () => {
   const navigation = useNavigation();
   const handleReservations = () => {};
   return (
-    <StyledContainer>
+    <ImageBackground
+      source={require("../assets/laulibrary.png")}
+      style={styles.mainBackground}
+    >
       <InnerContainer>
         <Ionicons name="library-outline" color={"white"} size={200}></Ionicons>
         <StyledFormArea>
@@ -36,8 +41,37 @@ const Library = () => {
           </StyledButton>
         </StyledFormArea>
       </InnerContainer>
-    </StyledContainer>
+    </ImageBackground>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  mainHeader: {
+    flex: 1,
+
+    width: "100%",
+    backgroundColor: "green",
+  },
+  mainBackground: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+
+    width: "100%",
+    height: "100%",
+  },
+  mainImage: {
+    height: 300,
+    width: 400,
+  },
+});
 
 export default Library;

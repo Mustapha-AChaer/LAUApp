@@ -1,12 +1,21 @@
 import { LinearGradient } from "expo-linear-gradient";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
 import { useSelector } from "react-redux";
 import NewsCard from "./NewsComponents/NewsCard";
 
-function AppNews(props) {
-  let news = useSelector((state) => state.news.news);
-  // console.log(news);
+const axios = require("axios").default;
+
+const AppNews = () => {
+  const [news, setNews] = useState([]);
+
+  const url = "https://salty-bastion-49991.herokuapp.com/news/get-news";
+
+  useEffect(() => {
+    axios.get(url).then((result) => {
+      setNews(result.data.data);
+    });
+  }, []);
 
   return (
     <ScrollView style={styles.newsHeader}>
@@ -21,7 +30,7 @@ function AppNews(props) {
       ))}
     </ScrollView>
   );
-}
+};
 const styles = StyleSheet.create({
   newsHeader: {
     width: "100%",

@@ -100,8 +100,7 @@ const Login = ({ navigation }) => {
               resizeMode="cover"
               source={require("./../assets/LauLogo.png")}
             />
-            <PageTitle>Hello</PageTitle>
-            <SubTitle>Account Login</SubTitle>
+            {/* <PageTitle>Login</PageTitle> */}
 
             <Formik
               initialValues={{ email: "", password: "" }}

@@ -11,14 +11,9 @@ import Profile from "./screens/Profile";
 import LibraryStack from "./navigators/LibraryStack";
 import Cafeteria from "./screens/Cafeteria";
 import SportsStack from "./navigators/SportStack";
-
-function AboutUs() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>About Us</Text>
-    </View>
-  );
-}
+import AboutUs from "./screens/AboutUs";
+import Apply from "./screens/Apply";
+import Courses from "./screens/Courses";
 
 const Drawer = createDrawerNavigator();
 
@@ -28,13 +23,13 @@ function MyDrawer() {
   return (
     <Drawer.Navigator>
       {!isLoggedIn && <Drawer.Screen name="Home" component={HomePage} />}
-      {!isLoggedIn && <Drawer.Screen name="Apply" component={AboutUs} />}
+      {!isLoggedIn && <Drawer.Screen name="Apply" component={Apply} />}
       {!isLoggedIn && (
         <Drawer.Screen name="Login/SignUp" component={RootStack} />
       )}
       {!isLoggedIn && <Drawer.Screen name="About Us" component={AboutUs} />}
       {isLoggedIn && <Drawer.Screen name="Profile" component={Profile} />}
-      {isLoggedIn && <Drawer.Screen name="Courses" component={AboutUs} />}
+      {isLoggedIn && <Drawer.Screen name="Courses" component={Courses} />}
 
       {isLoggedIn && <Drawer.Screen name="Library" component={LibraryStack} />}
       {isLoggedIn && <Drawer.Screen name="Sports" component={SportsStack} />}

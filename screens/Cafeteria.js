@@ -52,13 +52,10 @@ const Cafeteria = () => {
   }, []);
 
   return (
-    <ScrollView>
-      <StyledContainer>
-        <CafeteriaTitle>Sage Menu</CafeteriaTitle>
-
-        {listDishes}
-      </StyledContainer>
-    </ScrollView>
+    <StyledContainer>
+      <CafeteriaTitle>Sage Menu</CafeteriaTitle>
+      <ScrollView>{listDishes}</ScrollView>
+    </StyledContainer>
   );
 };
 

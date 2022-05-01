@@ -1,5 +1,12 @@
 import styled from "styled-components";
-import { View, Image, Text, TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  Image,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import Constants from "expo-constants";
 
 const StatusBarHeight = Constants.statusBarHeight;
@@ -11,12 +18,13 @@ export const Colors = {
 };
 
 const { primary, primaryGreen, secondaryGreen } = Colors;
-
+const windowHeight = Dimensions.get("window").height;
 export const StyledContainer = styled.View`
   flex: 1;
   padding: 15px;
   padding-top: ${StatusBarHeight - 10}px;
   background-color: ${primaryGreen};
+  height: ${windowHeight}px;
 `;
 
 export const InnerContainer = styled.View`
@@ -35,6 +43,7 @@ export const PageTitle = styled.Text`
   text-align: center;
   font-weight: bold;
   color: ${primary};
+  text-decoration: underline;
 `;
 
 export const SubTitle = styled.Text`
