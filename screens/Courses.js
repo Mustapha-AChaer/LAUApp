@@ -4,8 +4,14 @@ import { Text, StyleSheet, ScrollView } from "react-native";
 
 import SelectDropdown from "react-native-select-dropdown";
 import {
+  CourseCard,
+  CourseDescription,
+  CourseHeading,
+  CourseInstructor,
+  CourseRef,
   CoursesContainer,
   CoursesListingContainer,
+  CourseTitle,
 } from "../components/CoursesStyle";
 
 const courses = ["All", "Computer Science", "English", "Business"];
@@ -15,6 +21,26 @@ const Courses = () => {
   const [selectedType, setSelectedType] = useState("");
   const [courseList, setCourseList] = useState([]);
   const url = "https://salty-bastion-49991.herokuapp.com/course/get-course";
+  let courseListView = null;
+
+  courseListView = courseList.map((course) => (
+    <CourseCard>
+      <CourseTitle>
+        <CourseHeading>Title:</CourseHeading>
+        &nbsp; {course.title}
+      </CourseTitle>
+      <CourseRef>
+        <CourseHeading>Reference:</CourseHeading>
+        &nbsp; {course.reference}
+      </CourseRef>
+      <CourseRef>
+        <CourseHeading>Instructor:</CourseHeading>
+        <CourseInstructor> &nbsp; {course.instructor}</CourseInstructor>
+      </CourseRef>
+      <CourseDescription>&nbsp; {course.description}</CourseDescription>
+    </CourseCard>
+  ));
+
   //need to get specfic courses depending on the dropdown
   useEffect(() => {
     console.log(selectedType);
@@ -23,17 +49,19 @@ const Courses = () => {
       selectedType === undefined ||
       selectedType === ""
     ) {
-      axios.post(url).then((result) => {
-        console.log(result.data.data);
+      axios.post(url, null, { params: { type: "" } }).then((result) => {
+        setCourseList(result.data.data);
       });
     } else {
       axios
         .post(url, null, { params: { type: selectedType } })
         .then((result) => {
-          console.log(result.data.data);
+          let data = result.data.data;
+          setCourseList(data);
         });
     }
   }, [selectedType]);
+
   return (
     <CoursesContainer>
       <SelectDropdown
@@ -59,7 +87,7 @@ const Courses = () => {
         rowTextStyle={styles.dropdown2RowTxtStyle}
       />
       <CoursesListingContainer>
-        <ScrollView></ScrollView>
+        <ScrollView>{courseListView}</ScrollView>
       </CoursesListingContainer>
     </CoursesContainer>
   );
