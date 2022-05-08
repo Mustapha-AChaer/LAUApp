@@ -5,6 +5,7 @@ import { Text, ImageBackground, StyleSheet } from "react-native";
 import {
   ButtonText,
   InnerContainer,
+  LibraryContainer,
   StyledButton,
   StyledContainer,
   StyledFormArea,
@@ -22,25 +23,21 @@ const Library = () => {
       source={require("../assets/laulibrary.png")}
       style={styles.mainBackground}
     >
-      <InnerContainer>
+      <LibraryContainer>
         <Ionicons name="library-outline" color={"white"} size={200}></Ionicons>
         <StyledFormArea>
           <StyledButton>
-            <ButtonText>
-              <TextLinkContent onPress={() => navigation.navigate("Books")}>
-                View All Books
-              </TextLinkContent>
+            <ButtonText onPress={() => navigation.navigate("Books")}>
+              View All Books
             </ButtonText>
           </StyledButton>
           <StyledButton>
-            <ButtonText>
-              <TextLinkContent onPress={() => navigation.navigate("StudyRoom")}>
-                Reserve Study Room
-              </TextLinkContent>
+            <ButtonText onPress={() => navigation.navigate("StudyRoom")}>
+              Reserve Study Room
             </ButtonText>
           </StyledButton>
         </StyledFormArea>
-      </InnerContainer>
+      </LibraryContainer>
     </ImageBackground>
   );
 };

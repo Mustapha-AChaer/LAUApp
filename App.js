@@ -30,11 +30,10 @@ function MyDrawer() {
       {!isLoggedIn && <Drawer.Screen name="About Us" component={AboutUs} />}
       {isLoggedIn && <Drawer.Screen name="Profile" component={Profile} />}
       {isLoggedIn && <Drawer.Screen name="Courses" component={Courses} />}
-
       {isLoggedIn && <Drawer.Screen name="Library" component={LibraryStack} />}
       {isLoggedIn && <Drawer.Screen name="Sports" component={SportsStack} />}
       {isLoggedIn && <Drawer.Screen name="Cafeteria" component={Cafeteria} />}
-      {isLoggedIn && <Drawer.Screen name="Clubs" component={AboutUs} />}
+      {/* {isLoggedIn && <Drawer.Screen name="Clubs" component={AboutUs} />} */}
     </Drawer.Navigator>
   );
 }

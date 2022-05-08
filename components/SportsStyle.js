@@ -1,5 +1,12 @@
 import styled from "styled-components";
-import { View, Image, Text, TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  Image,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import Constants from "expo-constants";
 
 const StatusBarHeight = Constants.statusBarHeight;
@@ -53,7 +60,8 @@ export const SportsGameCard = styled.View`
   align-items: center;
   background-color: ${primary};
   height: 100px;
-  width: 90%;
+  width: ${Dimensions.get("window").width - 20}px;
+
   border-radius: 30px;
   margin: 15px;
 `;
@@ -119,4 +127,78 @@ export const VSImage = styled.Image`
 
 export const SportsInfoText = styled.Text`
   font-size: 17px;
+`;
+
+///Tryouts Style
+
+export const TryoutsContainer = styled.View`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+`;
+
+export const TeamContainer = styled.View`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: black;
+  align-items: center;
+  border-radius: 30px;
+  height: 200px;
+  margin: 10px 0;
+  width: ${Dimensions.get("window").width - 20}px;
+  overflow: hidden;
+`;
+
+export const InfoContainer = styled.View`
+  display: flex;
+  flex: 8;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+
+  align-items: center;
+`;
+
+export const MoreInfoContainer = styled.View`
+  display: flex;
+  flex: 2;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  padding: 10px;
+`;
+
+export const TryOutTitle = styled.Text`
+  font-size: 20px;
+  text-decoration: underline;
+  text-transform: uppercase;
+  color: orange;
+`;
+
+export const InfoText = styled.Text`
+  font-size: 15px;
+  text-transform: uppercase;
+  color: white;
+`;
+
+export const LocationText = styled.Text`
+  font-size: 15px;
+  text-transform: uppercase;
+  color: white;
+`;
+
+export const ApplyButton = styled.TouchableOpacity`
+  height: 30px;
+  width: 90px;
+  display: flex;
+  color: white;
+  background-color: black;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
 `;

@@ -13,18 +13,12 @@ import {
 } from "../components/SportsStyle";
 import { Ionicons } from "@expo/vector-icons";
 
-import { Text, ImageBackground, StyleSheet } from "react-native";
+import { Text, ImageBackground, StyleSheet, ScrollView } from "react-native";
+import { BackTickButton } from "../components/GlobalComponents";
 
 const axios = require("axios").default;
-const DUMMYDATA = {
-  time: "23:00",
-  VS: "Antonie",
-  date: "23-10-2022",
-  type: "Friendly",
-  sport: "Futsal",
-  location: "USJ",
-};
-const ViewAllGames = () => {
+
+const ViewAllGames = ({ navigation }) => {
   const [allGames, setAllGames] = useState([]);
 
   const url = "https://salty-bastion-49991.herokuapp.com/sports/get-all-games";
@@ -37,7 +31,7 @@ const ViewAllGames = () => {
       <SportTeams>
         <SportTeamImage source={require("../assets/lau.png")}></SportTeamImage>
         <VSImage source={require("../assets/vs.png")}></VSImage>
-        {game.VS === "Antonie" ? (
+        {game.VS === "UA" ? (
           <SportTeamImage
             source={require("../assets/antonie.png")}
           ></SportTeamImage>
@@ -77,14 +71,20 @@ const ViewAllGames = () => {
     });
   }, []);
   return (
-    <SportsViewContainer>
-      <ImageBackground
-        source={require("../assets/viewallgames.jpg")}
-        style={styles.mainBackground}
-      >
-        {listGames}
-      </ImageBackground>
-    </SportsViewContainer>
+    <ImageBackground
+      source={require("../assets/viewallgames.jpg")}
+      style={styles.mainBackground}
+    >
+      <BackTickButton onPress={() => navigation.navigate("Sports")}>
+        <Ionicons name="arrow-back-outline" size={40}>
+          Go Back
+        </Ionicons>
+      </BackTickButton>
+
+      <SportsViewContainer>
+        <ScrollView>{listGames}</ScrollView>
+      </SportsViewContainer>
+    </ImageBackground>
   );
 };
 const styles = StyleSheet.create({

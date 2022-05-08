@@ -12,12 +12,18 @@ function NewsInfo(props) {
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 20,
+    fontSize: 15,
     color: "#0bab64",
+    width: "60%",
+    height: "40%",
+    textDecorationLine: "underline",
   },
   description: {
     fontSize: 10,
-    color: "#0bab64",
+    width: "25%",
+    height: "60%",
+
+    color: "black",
   },
 });
 

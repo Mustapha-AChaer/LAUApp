@@ -256,3 +256,11 @@ export const CafeteriaTitle = styled.Text`
   text-transform: uppercase;
   margin-bottom: 10px;
 `;
+
+//Library
+export const LibraryContainer = styled.View`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;

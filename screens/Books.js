@@ -11,11 +11,13 @@ import {
 } from "../components/Style";
 
 import { Ionicons } from "@expo/vector-icons";
+import { BackTickButton } from "../components/GlobalComponents";
+import { NavigationContainer } from "@react-navigation/native";
 
 const { primaryGreen, secondaryGreen, primary } = Colors;
 const axios = require("axios").default;
 
-const Books = () => {
+const Books = ({ navigation }) => {
   const [books, setbooks] = useState([]);
 
   const listBooks = books.map((book) => (
@@ -39,11 +41,20 @@ const Books = () => {
       //console.log(books);
     });
   }, []);
+
   return (
-    <ScrollView>
-      <BookViewer>{listBooks}</BookViewer>
-    </ScrollView>
+    <StyledContainer>
+      <BackTickButton onPress={() => navigation.navigate("Library")}>
+        <Ionicons name="arrow-back-outline" size={40}>
+          Go Back
+        </Ionicons>
+      </BackTickButton>
+      <ScrollView>
+        <BookViewer>{listBooks}</BookViewer>
+      </ScrollView>
+    </StyledContainer>
   );
 };
 
 export default Books;
+// arrow-back-outline

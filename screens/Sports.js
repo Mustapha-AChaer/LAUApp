@@ -19,7 +19,7 @@ const Sports = ({ navigation }) => {
         <SportsButton onPress={() => navigation.navigate("LAU Sailors Games")}>
           <SportsButtonText>View All Games</SportsButtonText>
         </SportsButton>
-        <SportsButton onPress={() => navigation.navigate("LAU Sailors Games")}>
+        <SportsButton onPress={() => navigation.navigate("Try Out Dates")}>
           <SportsButtonText>Check Tryouts</SportsButtonText>
         </SportsButton>
       </ImageBackground>

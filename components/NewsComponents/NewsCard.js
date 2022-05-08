@@ -18,9 +18,9 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "#fff",
     width: "98%",
-    height: 100,
+    height: 120,
     margin: 5,
-    padding: 3,
+    padding: 5,
     display: "flex",
     flexDirection: "row",
     borderRadius: 10,

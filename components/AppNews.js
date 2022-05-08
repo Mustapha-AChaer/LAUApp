@@ -37,11 +37,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   background: {
+    height: "100%",
     position: "absolute",
     left: 0,
     right: 0,
     top: 0,
-    height: 900,
   },
 });
 export default AppNews;

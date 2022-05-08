@@ -28,7 +28,7 @@ const Profile = () => {
       <ContactCard>
         <NameText>{userInfo.name}</NameText>
         <IDText>{userInfo.email}</IDText>
-        <IDText>{userInfo.id}</IDText>
+        <IDText>{userInfo.lauID}</IDText>
       </ContactCard>
     </StyledContainer>
   );
