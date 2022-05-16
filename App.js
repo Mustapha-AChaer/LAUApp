@@ -14,25 +14,128 @@ import SportsStack from "./navigators/SportStack";
 import AboutUs from "./screens/AboutUs";
 import Apply from "./screens/Apply";
 import Courses from "./screens/Courses";
+import CoursesStack from "./navigators/CoursesStack";
+import CustomDrawer from "./components/CustomDrawer";
+import { Ionicons } from "@expo/vector-icons";
 
 const Drawer = createDrawerNavigator();
-
 function MyDrawer() {
   const isLoggedIn = useSelector((state) => state.loggedInInfo.isLoggedIn);
   console.log(isLoggedIn);
   return (
-    <Drawer.Navigator>
-      {!isLoggedIn && <Drawer.Screen name="Home" component={HomePage} />}
-      {!isLoggedIn && <Drawer.Screen name="Apply" component={Apply} />}
+    <Drawer.Navigator
+      drawerContent={(props) => <CustomDrawer {...props} />}
+      screenOptions={{
+        drawerActiveBackgroundColor: "#0bab64",
+        drawerActiveTintColor: "#fff",
+        drawerInactiveTintColor: "#0bab64",
+        headerShown: false,
+        drawerLabelStyle: { marginLeft: -25 },
+      }}
+    >
+      <Drawer.Screen
+        name="Home"
+        component={HomePage}
+        options={{
+          drawerIcon: ({ color }) => (
+            <Ionicons name="home-outline" size={22} color={color} />
+          ),
+        }}
+      />
+
       {!isLoggedIn && (
-        <Drawer.Screen name="Login/SignUp" component={RootStack} />
+        <Drawer.Screen
+          name="Apply"
+          component={Apply}
+          options={{
+            drawerIcon: ({ color }) => (
+              <Ionicons name="laptop-outline" size={22} color={color} />
+            ),
+          }}
+        />
       )}
-      {!isLoggedIn && <Drawer.Screen name="About Us" component={AboutUs} />}
-      {isLoggedIn && <Drawer.Screen name="Profile" component={Profile} />}
-      {isLoggedIn && <Drawer.Screen name="Courses" component={Courses} />}
-      {isLoggedIn && <Drawer.Screen name="Library" component={LibraryStack} />}
-      {isLoggedIn && <Drawer.Screen name="Sports" component={SportsStack} />}
-      {isLoggedIn && <Drawer.Screen name="Cafeteria" component={Cafeteria} />}
+      {!isLoggedIn && (
+        <Drawer.Screen
+          name="Login/SignUp"
+          component={RootStack}
+          options={{
+            drawerIcon: ({ color }) => (
+              <Ionicons name="log-in-outline" size={22} color={color} />
+            ),
+          }}
+        />
+      )}
+
+      <Drawer.Screen
+        name="About Us"
+        component={AboutUs}
+        options={{
+          drawerIcon: ({ color }) => (
+            <Ionicons name="person-circle-outline" size={22} color={color} />
+          ),
+        }}
+      />
+
+      {/* {isLoggedIn && (
+        <Drawer.Screen
+          name="Profile"
+          component={Profile}
+          options={{
+            drawerIcon: ({ color }) => (
+              <Ionicons name="person-outline" size={22} color={color} />
+            ),
+          }}
+        />
+      )} */}
+      {isLoggedIn && (
+        <Drawer.Screen
+          name="Library"
+          component={LibraryStack}
+          options={{
+            drawerIcon: ({ color }) => (
+              <Ionicons name="library-outline" size={22} color={color} />
+            ),
+          }}
+        />
+      )}
+      {isLoggedIn && (
+        <Drawer.Screen
+          name="Courses"
+          component={CoursesStack}
+          options={{
+            drawerIcon: ({ color }) => (
+              <Ionicons name="book-outline" size={22} color={color} />
+            ),
+          }}
+        />
+      )}
+
+      {isLoggedIn && (
+        <Drawer.Screen
+          name="Sports"
+          component={SportsStack}
+          options={{
+            drawerIcon: ({ color }) => (
+              <Ionicons
+                name="game-controller-outline"
+                size={22}
+                color={color}
+              />
+            ),
+          }}
+        />
+      )}
+      {isLoggedIn && (
+        <Drawer.Screen
+          name="Cafeteria"
+          component={Cafeteria}
+          options={{
+            drawerIcon: ({ color }) => (
+              <Ionicons name="fast-food-outline" size={22} color={color} />
+            ),
+          }}
+        />
+      )}
       {/* {isLoggedIn && <Drawer.Screen name="Clubs" component={AboutUs} />} */}
     </Drawer.Navigator>
   );

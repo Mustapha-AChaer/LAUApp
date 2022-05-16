@@ -20,7 +20,7 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-const Tryouts = () => {
+const Tryouts = ({ navigation }) => {
   const [tryoutList, setTryoutList] = useState([]);
   const userInfo = useSelector((state) => state.loggedInInfo.userInfo);
 
@@ -91,8 +91,9 @@ const Tryouts = () => {
       <ImageBackground
         source={require("../assets/tryouts.jpg")}
         style={styles.mainBackground}
+        resizeMode="cover"
       >
-        <BackTickButton onPress={() => navigation.navigate("Library")}>
+        <BackTickButton onPress={() => navigation.navigate("Sports")}>
           <Ionicons name="arrow-back-outline" size={40}>
             Go Back
           </Ionicons>
@@ -125,6 +126,15 @@ const styles = StyleSheet.create({
     alignContent: "center",
     width: "100%",
     height: "100%",
+  },
+  mainMainBackground: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center",
+    width: "100%",
+    height: "100%",
+    paddingVertical: 30,
   },
   mainImage: {
     height: 300,

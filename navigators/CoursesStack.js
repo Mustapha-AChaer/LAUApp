@@ -10,13 +10,13 @@ const { primary, primaryGreen, secondaryGreen } = Colors;
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import Sports from "../screens/Sports.js";
+import Courses from "../screens/Courses.js";
 import ViewAllGames from "../screens/ViewAllGames.js";
-import Tryouts from "../screens/Tryouts.js";
+import Instructor from "../screens/Instructor.js";
 
 const Stack = createNativeStackNavigator();
 
-const SportsStack = () => {
+const CoursesStack = () => {
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator
@@ -33,12 +33,11 @@ const SportsStack = () => {
         }}
         intialRouteName="Login"
       >
-        <Stack.Screen name="Sports" component={Sports} />
-        <Stack.Screen name="LAU Sailors Games" component={ViewAllGames} />
-        <Stack.Screen name="Try Out Dates" component={Tryouts} />
+        <Stack.Screen name="Courses" component={Courses} />
+        <Stack.Screen name="Instructor" component={Instructor} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-export default SportsStack;
+export default CoursesStack;

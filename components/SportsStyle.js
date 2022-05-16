@@ -20,6 +20,7 @@ export const Colors = {
 const { primaryGreen, secondaryGreen, primary } = Colors;
 
 export const SportsViewContainer = styled.View`
+  padding: 30px 0px;
   display: flex;
   justify-content: center;
   align-items: center;

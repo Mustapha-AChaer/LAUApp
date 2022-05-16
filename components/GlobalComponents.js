@@ -23,7 +23,7 @@ const windowHeight = Dimensions.get("window").height;
 export const BackTickButton = styled.TouchableOpacity`
   position: absolute;
   z-index: 3;
-  top: 6;
+  top: 40;
   left: 10;
   border-radius: 30px;
   background-color: ${primaryGreen};

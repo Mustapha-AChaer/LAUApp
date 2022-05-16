@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StyledContainer } from "../components/Style";
-import { Text, StyleSheet, ScrollView } from "react-native";
+import { Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 
 import SelectDropdown from "react-native-select-dropdown";
 import {
@@ -12,19 +12,21 @@ import {
   CoursesContainer,
   CoursesListingContainer,
   CourseTitle,
+  InstructorLink,
+  LinkText,
 } from "../components/CoursesStyle";
 
 const courses = ["All", "Computer Science", "English", "Business"];
 const axios = require("axios").default;
 
-const Courses = () => {
+const Courses = ({ navigation }) => {
   const [selectedType, setSelectedType] = useState("");
   const [courseList, setCourseList] = useState([]);
   const url = "https://salty-bastion-49991.herokuapp.com/course/get-course";
   let courseListView = null;
 
   courseListView = courseList.map((course) => (
-    <CourseCard>
+    <CourseCard key={course.title}>
       <CourseTitle>
         <CourseHeading>Title:</CourseHeading>
         &nbsp; {course.title}
@@ -34,8 +36,14 @@ const Courses = () => {
         &nbsp; {course.reference}
       </CourseRef>
       <CourseRef>
-        <CourseHeading>Instructor:</CourseHeading>
-        <CourseInstructor> &nbsp; {course.instructor}</CourseInstructor>
+        <InstructorLink
+          onPress={() =>
+            navigation.navigate("Instructor", { name: course.instructor })
+          }
+        >
+          <CourseHeading>Instructor:</CourseHeading>
+          <LinkText>{course.instructor}</LinkText>
+        </InstructorLink>
       </CourseRef>
       <CourseDescription>&nbsp; {course.description}</CourseDescription>
     </CourseCard>
@@ -86,9 +94,9 @@ const Courses = () => {
         rowStyle={styles.dropdown2RowStyle}
         rowTextStyle={styles.dropdown2RowTxtStyle}
       />
-      <CoursesListingContainer>
-        <ScrollView>{courseListView}</ScrollView>
-      </CoursesListingContainer>
+      <ScrollView>
+        <CoursesListingContainer>{courseListView}</CoursesListingContainer>
+      </ScrollView>
     </CoursesContainer>
   );
 };

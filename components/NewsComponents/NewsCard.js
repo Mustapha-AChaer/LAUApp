@@ -7,7 +7,7 @@ import NewsInfo from "./NewsInfo";
 function NewsCard(props) {
   //console.log(props);
   return (
-    <View style={styles.card}>
+    <View style={styles.card} key={props.news.title}>
       <Image source={{ uri: props.news.imgURL }} style={styles.image} />
 
       <NewsInfo info={props.news} />

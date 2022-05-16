@@ -23,13 +23,26 @@ const { primary, primaryGreen, secondaryGreen } = Colors;
 const Profile = () => {
   const userInfo = useSelector((state) => state.loggedInInfo.userInfo);
   console.log(userInfo);
+
+  const tryoutsListing = userInfo.tryouts.map((tryout) => (
+    <ContactCard>
+      <NameText>{tryout.team}</NameText>
+      <IDText>{tryout.location}</IDText>
+      <IDText>{tryout.time}</IDText>
+      <IDText>{tryout.date}</IDText>
+    </ContactCard>
+  ));
   return (
     <StyledContainer>
       <ContactCard>
         <NameText>{userInfo.name}</NameText>
         <IDText>{userInfo.email}</IDText>
-        <IDText>{userInfo.lauID}</IDText>
+        <IDText>{userInfo.id || userInfo.lauID}</IDText>
       </ContactCard>
+      <ContactCard>
+        <NameText>Tryouts</NameText>
+      </ContactCard>
+      {tryoutsListing}
     </StyledContainer>
   );
 };
